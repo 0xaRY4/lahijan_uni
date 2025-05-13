@@ -1,0 +1,51 @@
+{% extends 'faculty/base.html' %}
+
+{% block content %}
+    <h2 class="text-3xl font-bold mb-6 text-center">ویرایش استاد</h2>
+    <form method="post" enctype="multipart/form-data" class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md">
+        {% csrf_token %}
+        <div class="mb-4">
+            <label for="{{ form.name.id_for_label }}" class="block text-gray-700">نام</label>
+            {{ form.name }}
+        </div>
+        <div class="mb-4">
+            <label for="{{ form.academic_rank.id_for_label }}" class="block text-gray-700">رتبه علمی</label>
+            {{ form.academic_rank }}
+        </div>
+        <div class="mb-4">
+            <label for="{{ form.department.id_for_label }}" class="block text-gray-700">دپارتمان</label>
+            {{ form.department }}
+        </div>
+        <div class="mb-4">
+            <label for="{{ form.education.id_for_label }}" class="block text-gray-700">تحصیلات</label>
+            {{ form.education }}
+        </div>
+        <div class="mb-4">
+            <label for="{{ form.research_interests.id_for_label }}" class="block text-gray-700">علایق پژوهشی</label>
+            {{ form.research_interests }}
+        </div>
+        <div class="mb-4">
+            <label for="{{ form.email.id_for_label }}" class="block text-gray-700">ایمیل</label>
+            {{ form.email }}
+        </div>
+        <div class="mb-4">
+            <label for="{{ form.phone.id_for_label }}" class="block text-gray-700">تلفن</label>
+            {{ form.phone }}
+        </div>
+        <div class="mb-4">
+            <label for="{{ form.profile_image.id_for_label }}" class="block text-gray-700">تصویر پروفایل</label>
+            {{ form.profile_image }}
+            {% if faculty.profile_image %}
+                <p class="text-gray-600">تصویر فعلی: <img src="{{ faculty.profile_image.url }}" alt="{{ faculty.name }}" class="w-16 h-16 object-cover mt-2"></p>
+            {% endif %}
+        </div>
+        <div class="mb-4">
+            <label for="{{ form.resume_file.id_for_label }}" class="block text-gray-700">فایل رزومه</label>
+            {{ form.resume_file }}
+            {% if faculty.resume_file %}
+                <p class="text-gray-600">فایل فعلی: <a href="{{ faculty.resume_file.url }}" class="text-blue-600 hover:underline">{{ faculty.resume_file.name }}</a></p>
+            {% endif %}
+        </div>
+        <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700">ذخیره</button>
+    </form>
+{% endblock %}

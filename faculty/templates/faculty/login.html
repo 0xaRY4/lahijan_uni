@@ -1,0 +1,17 @@
+{% extends 'faculty/base.html' %}
+
+{% block content %}
+    <h2 class="text-3xl font-bold mb-6 text-center">ورود رئیس دانشکده</h2>
+    <form method="post" class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+        {% csrf_token %}
+        <div class="mb-4">
+            <label for="{{ form.username.id_for_label }}" class="block text-gray-700">نام کاربری</label>
+            {{ form.username }}
+        </div>
+        <div class="mb-4">
+            <label for="{{ form.password.id_for_label }}" class="block text-gray-700">رمز عبور</label>
+            {{ form.password }}
+        </div>
+        <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700">ورود</button>
+    </form>
+{% endblock %}

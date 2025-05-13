@@ -1,0 +1,13 @@
+{% extends 'faculty/base.html' %}
+
+{% block content %}
+    <h2 class="text-3xl font-bold mb-6 text-center">حذف استاد</h2>
+    <div class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md">
+        <p class="mb-4">آیا مطمئن هستید که می‌خواهید استاد <strong>{{ faculty.name }}</strong> را حذف کنید؟</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="w-full bg-red-600 text-white p-2 rounded hover:bg-red-700">حذف</button>
+            <a href="{% url 'dashboard' %}" class="block text-center mt-4 text-blue-600 hover:underline">لغو</a>
+        </form>
+    </div>
+{% endblock %}

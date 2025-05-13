@@ -1,0 +1,35 @@
+{% extends 'faculty/base.html' %}
+
+{% block content %}
+    <h2 class="text-3xl font-bold mb-6 text-center">داشبورد رئیس دانشکده</h2>
+    <div class="bg-white p-6 rounded-lg shadow-md">
+        <h3 class="text-2xl font-semibold mb-4">مدیریت اساتید</h3>
+        <table class="w-full table-auto">
+            <thead>
+                <tr class="bg-gray-200">
+                    <th class="p-2">نام</th>
+                    <th class="p-2">رتبه علمی</th>
+                    <th class="p-2">دپارتمان</th>
+                    <th class="p-2">عملیات</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for faculty in faculties %}
+                    <tr class="border-b">
+                        <td class="p-2">{{ faculty.name }}</td>
+                        <td class="p-2">{{ faculty.academic_rank }}</td>
+                        <td class="p-2">{{ faculty.department }}</td>
+                        <td class="p-2">
+                            <a href="{% url 'edit_faculty' faculty.pk %}" class="text-blue-600 hover:underline">ویرایش</a>
+                            <a href="{% url 'delete_faculty' faculty.pk %}" class="text-red-600 hover:underline ml-4">حذف</a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4" class="p-2 text-center">هیچ استادی ثبت نشده است.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lahijan University</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+    <header class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">دانشگاه آزاد واحد لاهیجان</h1>
+            <nav>
+                <a href="{% url 'home' %}" class="px-4 hover:underline">خانه</a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'dashboard' %}" class="px-4 hover:underline">داشبورد</a>
+                    <a href="{% url 'add_faculty' %}" class="px-4 hover:underline">افزودن استاد</a>
+                    <form method="post" action="{% url 'login' %}" class="inline">
+                        {% csrf_token %}
+                        <button type="submit" name="logout" class="px-4 hover:underline">خروج</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'login' %}" class="px-4 hover:underline">ورود</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+    <main class="container mx-auto p-6">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer class="bg-blue-600 text-white p-4 text-center">
+        <p>&copy; 2025 دانشگاه آزاد واحد لاهیجان</p>
+    </footer>
+</body>
+</html>
