@@ -36,7 +36,7 @@ Follow these steps carefully to set up and run the project on your local machine
 3. Clone the project repository from GitHub:
   
   ```bash
-  git clone https://github.com/yourusername/lahijan_uni.git
+  git clone https://github.com/0xaRY4/lahijan_uni.git
   ```
   
   *Note: Replace `yourusername` with the actual GitHub username hosting the repository.*
